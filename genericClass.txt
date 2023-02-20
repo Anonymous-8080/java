@@ -1,0 +1,16 @@
+public class Generic
+{
+public static <El>void printArray(El[] elements)
+ {
+for (El ele:elements)
+ {
+System.out.println(ele);
+ }
+System.out.println();
+ }
+public static void main(String[] args)
+{
+Integer[] intArr = {11,22,33,44,55,66,77,88,99,};
+System.out.println("Integer Array"); printArray(intArr);
+}
+}

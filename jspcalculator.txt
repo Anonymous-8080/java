@@ -1,0 +1,61 @@
+6.2) Design loan calculator using JSP which accepts Period of Time (in years) and 
+Principal Loan Amount. Display the payment amount for each loan and then list the 
+loan balance and interest paid for each payment over the term of the loan for the 
+following time period and interest rate: 
+a. 1 to 7 year at 5.35%
+b. 8 to 15 year at 5.5%
+c. 16 to 30 year at 5.75%
+CODE:-
+<%@ page language="java" contentType="text/html;
+charset=ISO-8859-1"
+pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Loan Calculator</title>
+</head>
+<body>
+<fieldset style="width: 30%; border: 3px solid black">
+<legend>Loan Calculator</legend>
+<form action="Cal.jsp" method="post">
+<table>
+<tr>
+<td>Loan Amount:</td>
+<td><input type="text" name="pamount" /></td>
+</tr>
+<tr>
+<td>years</td>
+<td><input type="text" name="years"/></td>
+</tr>
+<tr>
+<td><input type="submit" name="Calculator"/></td>
+</tr>
+</table>
+</form>
+</fieldset>
+</body>
+</html>
+Calc.jsp:
+<%@include file="index.jsp"%>
+<%
+double amount = Double.parseDouble(request.getParameter("pamount"));
+int year = Integer.parseInt(request.getParameter("years"));
+double rate = 0.0;
+double interest = 0.0;
+if (year >= 1 || year <= 7) {
+interest = (amount = 5.35) / 100;
+out.println("Interest=" + interest);
+out.println("\n" + "EMI=" + (amount + interest) / (year * 12));
+} else if (year >= 8 || year <= 15) {
+interest = (amount = 5.5) / 100;
+out.println("Interest=" + interest);
+out.println("\n" + "EMI=" + (amount + interest) / (year * 12));
+} else if (year >= 16 || year <= 30) {
+interest = (amount = 5.75) / 100;
+out.println("Interest=" + interest);
+out.println("\n" + "EMI=" + (amount + interest) / (year * 12));
+} else {
+out.println("Enter Proper Year");
+}
+%>

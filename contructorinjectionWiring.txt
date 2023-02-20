@@ -1,0 +1,60 @@
+Java Spring Laboratory 3:
+Demonstrating Constructor Injection of a Collection type using XML based Wiring of 
+Spring Application.
+Code :
+Person.java
+package nmitd.spring;
+public interface Person {
+public void mySelf();
+}
+RichPerson.java
+package nmitd.spring;
+import java.util.List;
+public class RichPerson implements Person {
+private String firstName;
+private String lastName;
+private List<String>carsOwned;
+public RichPerson(String firstName, String lastName, List<String>carsOwned) {
+this.firstName = firstName;
+this.lastName = lastName;
+this.carsOwned = carsOwned;
+}
+public void mySelf() {
+System.out.println("Myself "+firstName+" "+lastName+" am a rich person 
+because I own all these cars:");
+for(String myCar : carsOwned) {
+System.out.println("-Car:" +myCar);
+}
+}
+}
+RichPersonMain.java
+package nmitd.spring;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+public class RichPersonMain {
+public static void main(String[] args) throws Exception{
+ClassPathXmlApplicationContext context = new 
+ClassPathXmlApplicationContext(
+"nmitd/spring/beans.xml");
+Person person = context.getBean(Person.class);
+person.mySelf();
+context.close();
+}
+}
+beans.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="person" class="nmitd.spring.RichPerson">
+<constructor-arg value="Mukesh"/>
+<constructor-arg value="Ambani"/>
+<constructor-arg>
+<list>
+<value>Mercedes E Class</value>
+<value>Maruti Suzuki Dezire</value>
+<value>BMW</value>
+</list>
+</constructor-arg>
+</bean>
+</beans>

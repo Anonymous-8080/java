@@ -1,0 +1,78 @@
+3.1) Write a Java program to create a Set containing list of items of type String and 
+print the items in the list using Iterator interface. Also print the list in reverse/ 
+backword or sort direction.
+CODE:-
+import java.util.*;
+public class Set {
+public static void main(String[] args) {
+System.out.println("Set Interface\n");
+HashSet<String> car = new HashSet<>();
+String car1 = "xylo";
+String car2 = "scorpio";
+String car3 = "tavera";
+String car4 = "alto";
+car.add(car1);
+car.add(car2);
+car.add(car3);
+car.add(car4);
+System.out.println("Cars: ");
+Iterator iterator = car.iterator();
+while (iterator.hasNext()) {
+System.out.println(iterator.next() + " ");
+}
+System.out.println();
+System.out.println("Cars in backward order:");
+List<String> reverseCar = new ArrayList<>(car);
+for (int i = reverseCar.size() - 1; i >= 0; i--) {
+System.out.println(reverseCar.get(i));
+}
+}
+}
+
+
+
+
+
+3.2) Write a Java program using Set interface containing list of items and perform the 
+following operations:
+a. Add items in the set. 
+b. Insert items of one set in to other set. 
+c. Remove items from the set
+d. Search the specified item in the set
+CODE:-
+import java.util.HashSet;
+import java.util.Set;
+public class SetExample {
+public static void main(String[] args) {
+// Creating a set of items
+Set<String> itemsSet = new HashSet<>();
+// Adding items to the set
+itemsSet.add("Apple");
+itemsSet.add("Banana");
+itemsSet.add("Orange");
+itemsSet.add("Grapes");
+itemsSet.add("Mango");
+// Printing the set of items
+System.out.println("Set of items: " + itemsSet);
+// Creating another set of items
+Set<String> anotherSet = new HashSet<>();
+// Adding items to the another set
+anotherSet.add("Pineapple");
+anotherSet.add("Watermelon");
+// Inserting items of another set into the first set
+itemsSet.addAll(anotherSet);
+// Printing the updated set of items
+System.out.println("Updated set of items: " + itemsSet);
+// Removing an item from the set
+itemsSet.remove("Grapes");
+// Printing the updated set of items
+System.out.println("Updated set of items after removing Grapes: " + itemsSet);
+// Searching for an item in the set
+String itemToSearch = "Mango";
+if (itemsSet.contains(itemToSearch)) {
+System.out.println(itemToSearch + " found in the set");
+} else {
+System.out.println(itemToSearch + " not found in the set");
+}
+}
+}
