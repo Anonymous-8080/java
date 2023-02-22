@@ -33,5 +33,6 @@ System.out.println("Updated list of elements: " + map);
 
 
 
-
+for (Map.Entry<String, Integer> e : map.entrySet())
+ System.out.println(e.getKey() + " "+ e.getValue());
 
